@@ -14,8 +14,7 @@
     require_once("../models/Email.php");
     $email = new Email();
 
-    require_once("../models/Whatsapp.php");
-    $whatsapp = new Whastapp();
+    
 
     $key="mi_key_secret";
     $cipher="aes-256-cbc";
@@ -62,7 +61,6 @@
                 }
             }
             $email->ticket_abierto($datos[0]["tick_id"]);
-            $whatsapp->w_ticket_abierto($datos[0]["tick_id"]);
             echo json_encode($datos);
             break;
 
@@ -76,7 +74,6 @@
             $ticket->insert_ticketdetalle_cerrar($decifrado,$_SESSION["usu_id"]);
 
             $email->ticket_cerrado($decifrado);
-            $whatsapp->w_ticket_cerrado($decifrado);
 
             echo $decifrado;
             break;
@@ -91,8 +88,6 @@
         case "asignar":
             $ticket->update_ticket_asignacion($_POST["tick_id"],$_POST["usu_asig"]);
             $email->ticket_asignado($_POST["tick_id"]);
-            $whatsapp->w_ticket_asignado_usuario($_POST["tick_id"]);
-            $whatsapp->w_ticket_asignado_soporte($_POST["tick_id"]);
             echo "1";
             break;
 

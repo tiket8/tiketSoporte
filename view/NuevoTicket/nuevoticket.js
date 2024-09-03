@@ -79,19 +79,26 @@ function guardaryeditar(e){
             contentType: false,
             processData: false,
             success: function(data){
-                console.log(data);
-                data = JSON.parse(data);
-                console.log(data[0].tick_id);
-
-                /* TODO: Limpiar campos */
-                $('#tick_titulo').val('');
-                $('#tick_descrip').summernote('reset');
-                /* TODO: Alerta de Confirmacion */
-                swal("Correcto!", "Ticket Registrado Correctamente: Nro-"+ data[0].tick_id, "success");
-
-                $('#btnguardar').prop("disabled",false);
+                console.log("Raw response data:", data);
+                try {
+                    data = JSON.parse(data);
+                    console.log("Parsed data:", data);
+                    if (data && data.length > 0 && data[0].tick_id) {
+                        swal("Correcto!", "Ticket Registrado Correctamente: Nro-" + data[0].tick_id, "success");
+                        $('#tick_titulo').val('');
+                        $('#tick_descrip').summernote('reset');
+                    } else {
+                        swal("Error!", "Ocurrió un error al registrar el ticket", "error");
+                    }
+                } catch (e) {
+                    console.error("Error parsing JSON:", e);
+                    console.error("Server response was:", data);
+                    swal("Error!", "Ocurrió un error al intentar registrar el ticket", "error");
+                }
+                $('#btnguardar').prop("disabled", false);
                 $('#btnguardar').html('Guardar');
             }
+            
         });
     }
 }

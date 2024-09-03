@@ -222,11 +222,6 @@ $(document).on("click","#btncerrarticket", function(){
                 },
             });
 
-            /* TODO:Alerta de ticket cerrado via Whaspp */
-            /* $.post("../../controller/whatsapp.php?op=w_ticket_cerrado", {tick_id : tick_id}, function (data) {
-
-            }); */
-
             swal.close();
         }
     });
