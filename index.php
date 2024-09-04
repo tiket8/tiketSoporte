@@ -94,6 +94,25 @@
                         </div>
                     </div>
                     <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+                        <!--TODO: Botón "Iniciar sesión con Google" con atributos de datos HTML para la API -->
+                        <!-- <div id="g_id_onload"
+                            data-client_id="592225408682-0k7df94bqpucikiovudb27idooij9slm.apps.googleusercontent.com"
+                            data-context="signin"
+                            data-ux_mode="popup"
+                            data-callback="handleCredentialResponse"
+                            data-auto_prompt="false"
+                        >
+                        </div> -->
+
+                        <!--TODO: Configuración del botón de inicio de sesión con Google -->
+                        <!-- <div class="g_id_signin"
+                            data-type="standard"
+                            data-shape="rectangular"
+                            data-theme="outline"
+                            data-text="signin_with"
+                            data-size="large"
+                            data-logo_alignment="left"
+                        ></div> -->
                     </div>
                     <input type="hidden" name="enviar" class="form-control" value="si">
                     <button type="submit" class="btn btn-rounded">Acceder</button>
